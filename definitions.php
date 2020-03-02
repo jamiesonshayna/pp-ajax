@@ -1,5 +1,21 @@
 <?php
 
+//require_once('/home/sjamieso/config-dating.php');
+
+$dbh = null;
+
+define("DB_DSN", "mysql:dbname=sjamieso_grc");
+define("DB_USERNAME", "sjamieso_grcuser");
+define("DB_PASSWORD", 'Bubblegum.69');
+
+try {
+    $dbh = PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+    echo "connecte!";
+} catch(PDOException $e) {
+    echo $e->getMessage();
+    return null;
+}
+
 $searchVal = $_POST['word'];
 
 $terms = array('ajax' => 'a Greek hero in the Trojan War who kills himself because the armor of Achilles is awarded to Odysseus.',
@@ -9,4 +25,4 @@ $terms = array('ajax' => 'a Greek hero in the Trojan War who kills himself becau
     'doctype' => 'a doctype or document type declaration is an instruction which tells the web browser about the markup language in which the current page is written.'
 );
 
-echo "<p><strong>$searchVal: </strong>{$terms[$searchVal]}</p>";
+//echo "<p><strong>$searchVal: </strong>{$terms[$searchVal]}</p>";
