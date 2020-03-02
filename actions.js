@@ -5,6 +5,5 @@ $('#search-btn').on('click', function () {
     $('#result').load('definitions.php', {word: searchVal},
         function (result) {
         $('#result').html(result);
-            //document.getElementById('result').innerHTML('<strong>result</strong>');
         })
 });
