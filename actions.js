@@ -1,6 +1,10 @@
 $('#search-btn').on('click', function () {
-    $('#result').load('definitions.php', {word: ***},
+
+    let searchVal = $('#terms').val();
+
+    $('#result').load('definitions.php', {word: searchVal},
         function (result) {
-            document.getElementById('result').innerHTML('<strong>result</strong>');
+        $('#result').html(result);
+            //document.getElementById('result').innerHTML('<strong>result</strong>');
         })
 });
