@@ -11,8 +11,6 @@ try {
     return null;
 }
 
-
-
 $searchVal = $_POST['word'];
 
 $terms = array('ajax' => 'a Greek hero in the Trojan War who kills himself because the armor of Achilles is awarded to Odysseus.',
@@ -22,4 +20,12 @@ $terms = array('ajax' => 'a Greek hero in the Trojan War who kills himself becau
     'doctype' => 'a doctype or document type declaration is an instruction which tells the web browser about the markup language in which the current page is written.'
 );
 
-echo "<p><strong>$searchVal: </strong>{$terms[$searchVal]}</p>";
+
+$sql = "SELECT definition FROM ajax WHERE word = $searchVal";
+
+$statement = $this->_dbh->prepare($sql);
+
+$statement->execute();
+
+return $statement->fetch();
+//echo "<p><strong>$searchVal: </strong>{$terms[$searchVal]}</p>";
